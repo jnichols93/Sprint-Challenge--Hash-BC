@@ -19,5 +19,10 @@ def reconstruct_trip(tickets, length):
     """
     YOUR CODE HERE
     """
+    # go through tiks and insert the src and dest, into ha-tbl.
+
+    # we need to find the origin -> loop thru 
+
+    # find 1st by retrieval of None in source, Start route
 
     pass
