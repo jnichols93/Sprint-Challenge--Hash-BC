@@ -23,11 +23,11 @@ def proof_of_work(last_proof):
     start = timer()
 
     print("Searching for next proof")
-    proof = 1
+    proof = 3
     #  TODO: Your code here
     last_hash = hashlib.sha256(f"{last_proof}".encode()).hexdigest()
     while not valid_proof(last_hash, proof):
-                proof += timer() - start / 2 
+            proof += timer() - start / 3
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
 
