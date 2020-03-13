@@ -20,9 +20,17 @@ def reconstruct_trip(tickets, length):
     YOUR CODE HERE
     """
     # go through tiks and insert the src and dest, into ha-tbl.
+    for ticket in tickets:
+        hash_table_insert(hashtable, ticket.source, ticket.destination)
+
+        current_location = "NONE"
 
     # we need to find the origin -> loop thru 
-
-    # find 1st by retrieval of None in source, Start route
-
-    pass
+    for i in range(length):
+    # find current location by retrieval of None in source, Start route
+        route[i] = hash_table_retrieve(hashtable, current_location)
+        current_location = route[i]
+    # pop the last item in  arr to replace"NONE" with route arr
+    route.pop()
+    #return route
+    return route
