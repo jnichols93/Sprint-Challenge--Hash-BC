@@ -13,11 +13,16 @@ def get_indices_of_item_weights(weights, length, limit):
     YOUR CODE HERE
     """
     # go through the array
-    # create a pair by retrieving from the tabel and subtracting limit
-    # if pair found return pair
+    for weight_i in range(length):
+        # create a pair by retrieving from the tabel and subtracting limit
+        pair = hash_table_retrieve(ht, limit - weights[weight_i])
+        # if pair found return pair
+        if pair is None:
+            hash_table_insert(ht, weights[weight_i], weight_i)
+
     # if/n continue trying using insert
-    
-    return None
+    else:
+        return (weight_i, pair)
 
 
 def print_answer(answer):
