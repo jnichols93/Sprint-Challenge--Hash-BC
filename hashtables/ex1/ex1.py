@@ -12,7 +12,11 @@ def get_indices_of_item_weights(weights, length, limit):
     """
     YOUR CODE HERE
     """
-
+    # go through the array
+    # create a pair by retrieving from the tabel and subtracting limit
+    # if pair found return pair
+    # if/n continue trying using insert
+    
     return None
 
 
