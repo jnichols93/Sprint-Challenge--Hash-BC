@@ -10,19 +10,28 @@ def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16)
 
     """
-    YOUR CODE HERE
+# * A brute-force solution would involve two nested loops, yielding a quadratic-runtime solution.
+#   How can we use a hash table in order to implement a solution with a better runtime?
+# * Think about what we can store in the hash table in order to help us to solve this problem more efficiently. 
+# * What if we store each weight in the input list as keys? What would be a useful thing to store as the value for each key? 
+# * If we store each weight's list index as its value, we can then check to see if the hash table contains an entry for `limit - weight`. 
+#   If it does, then we've found the two items whose weights sum up to the `limit`!
     """
-    # go through the array
-    for weight_i in range(length):
-        # create a pair by retrieving from the tabel and subtracting limit
-        pair = hash_table_retrieve(ht, limit - weights[weight_i])
-        # if pair found return pair
-        if pair is None:
-            hash_table_insert(ht, weights[weight_i], weight_i)
+    # insert in hash table
+    for i in range(length):
+            hash_table_insert(ht, weights[i], i)
+    answer = None
+    for i in range(length):
+        # When we check if the difference in limit and weight is in the hash table, 
+        # we should also make sure the hash table doesn't return the same number we are looking at.
+        if (hash_table_retrieve(ht, limit - weights[i]) and hash_table_retrieve(ht, limit - weights[i]) != i):
+            hash_index = hash_table_retrieve(ht, limit - weights[i])
+            if hash_index > i:
+                answer = (hash_index, i)
+            else:
+                answer = (i, hash_index)
+    return answer
 
-    # if/n continue trying using insert
-    else:
-        return (weight_i, pair)
 
 
 def print_answer(answer):
